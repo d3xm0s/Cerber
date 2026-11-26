@@ -29,8 +29,9 @@ cat > /tmp/cerber-kdc/krb5.conf <<'EOF'
     }
 EOF
 
-kdb5_util create -s -r TEST.LOCAL -P masterpass123 -d /tmp/cerber-kdc/db/principal
 export KRB5_CONFIG=/tmp/cerber-kdc/krb5.conf KRB5_KDC_PROFILE=/tmp/cerber-kdc/kdc.conf
+
+kdb5_util create -s -r TEST.LOCAL -P masterpass123
 
 kadmin.local -q "addprinc -pw Passw0rd123 alice"
 kadmin.local -q "addprinc -pw Summer2024! bob"
